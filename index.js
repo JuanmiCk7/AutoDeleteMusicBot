@@ -32,19 +32,17 @@ client.on('message', message => {
 
     if(message.content.startsWith('!skippy')) {
 
-        const voiceChannel = message.member.voice.channel;
+        if (!message.member.voice.channel) return message.reply("Tienes q estar en un canal brode!");
+        // Checking if the bot is in a voice channel.
+        if (message.guild.me.voice.channel) return message.reply("Illo, que ya estoy aqui!");
 
-        if(!voiceChannel) {
-            return message.channel.send('Illo, te tienes que conectar al chat de voz.');
-        }
+        // Joining the channel and creating a VoiceConnection.
+        message.member.voice.channel.join().then(VoiceConnection => {
 
-        const connection = voiceChannel.join();
-
-        const player = createAudioPlayer();
-
-        const resource = createAudioResource('./resources/skippy.mp3');
-
-        player.play(resource);
+        // Playing the music, and, on finish, disconnecting the bot.
+        VoiceConnection.play("./resources/skippy.mp3").on("finish", () => VoiceConnection.disconnect());
+            message.reply("Ha llegado Skippy!");
+        }).catch(e => console.log(e))
 
   
   }
