@@ -25,7 +25,16 @@ client.on('message', message => {
     }
 
     if (message.content === '!skippy') {
-        client.channels.cache.get('general').send("¿Quién es el mensajero de Dios?. ¿Y quién es el mensajero del mensajero de Dios?. Estamos en apoclipsis...")
+        var voiceChannel = message.member.voice.channel;
+
+        if (!voiceChannel) {
+            return message.channel.send("Illo, tienes que estar en una sala!")
+        }
+
+        voiceChannel.channel.join().then((connection) => {
+            connection.play('./resources/skippy.mp3')
+        })
+
     }
 })
 
