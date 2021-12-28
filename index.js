@@ -24,18 +24,33 @@ client.on('message', message => {
         message.delete()
     }
 
-    if (message.content === '!skippy') {
-        var voiceChannel = message.member.voice.channel;
+    if(message.content.startsWith('!skippy')) {
 
-        if (!voiceChannel) {
-            return message.channel.send("Illo, tienes que estar en una sala!")
-        }
+        if(!message.member.voiceChannel) return message.channel.send('Illo, te tienes que conectar al chat de voz.');
+  
+        message.member.voiceChannel.join()
+          .then(connection => { 
+  
+              console.log("Ha llegado el Skippy!");
+  
+              const dispatcher = connection.playFile(require("path").join(__dirname, './resources/skippy.mp3'));
+  
+              dispatcher.on('start', () => { //not working
+                  dispatcher.setVolume(0.70);
+                  console.log("Playing");
+              }); 
+  
+              dispatcher.on('error', (err) => console.log(err)); //no errors
+  
+              dispatcher.on('end', end => { //working fine
+                  console.log("Finished");
+                  console.log("End: " + end);
+                  message.member.voiceChannel.leave()
+              });
+          });
+  
+  }
 
-        voiceChannel.channel.join().then((connection) => {
-            connection.play('./resources/skippy.mp3')
-        })
-
-    }
 })
 
 client.login(process.env.TOKEN)
