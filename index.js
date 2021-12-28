@@ -24,6 +24,10 @@ client.on('message', message => {
         message.delete()
     }
 
+    if (content === "!illo") {
+        message.channel.send('Illo que pasa!');
+    }
+
     /*if(message.content.startsWith('!skippy')) {
 
         if(!message.member.voice) {
