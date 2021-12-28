@@ -1,13 +1,14 @@
-const { Client, Intents } = require('discord.js');
+const Discord = require('discord.js');
+const client = new Discord.Client()
 
-//const words = ['!play', '=play', '-play']
+const words = ['!play', '=play', '-play']
 
 client.on('ready', () => {
     console.log('The client is ready!')
 
 })
 
-/*client.on('message', message => {
+client.on('message', message => {
     var content = message.content;
 
     for (var i = 0; i < words.length; i++) {
@@ -21,6 +22,6 @@ client.on('ready', () => {
         message.delete()
     }
 })
-*/
+
 client.login(process.env.TOKEN)
 
