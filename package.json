@@ -1,7 +1,6 @@
 {
   "name": "autodeletemusicbot",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,5 +11,15 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^13.4.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanmiCk7/AutoDeleteMusicBot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JuanmiCk7/AutoDeleteMusicBot/issues"
+  },
+  "homepage": "https://github.com/JuanmiCk7/AutoDeleteMusicBot#readme",
+  "description": ""
 }
