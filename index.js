@@ -31,7 +31,7 @@ client.on('message', message => {
         }
         
 
-        message.member.voice.join()
+        message.member.voice.joinVoiceChannel()
           .then(connection => { 
   
               console.log("Ha llegado el Skippy!");
