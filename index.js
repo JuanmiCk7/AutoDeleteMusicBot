@@ -1,6 +1,5 @@
 const { Client, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-const config = require('./config.json')
+
 //const words = ['!play', '=play', '-play']
 
 client.on('ready', () => {
@@ -23,5 +22,5 @@ client.on('ready', () => {
     }
 })
 */
-client.login(config.token)
+client.login(process.env.TOKEN)
 
