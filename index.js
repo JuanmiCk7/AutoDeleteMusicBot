@@ -42,12 +42,12 @@ client.on('message', message => {
         const connection = voiceChannel.join();
 
         function videoFinder(query) {
-            const videoResult = await ytSearch(query);
+            const videoResult = ytSearch(query);
 
             return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
         }
 
-        const video =  videoFinder('el mensajero skippy')
+        const video = videoFinder('el mensajero skippy')
 
         if (video) {
             const stream = ytdl(video.url, {filter: 'audioonly'});
@@ -56,7 +56,7 @@ client.on('message', message => {
                 voiceChannel.leave();
             });
 
-            await message.reply('Ha llegado el Skippy!')
+            message.reply('Ha llegado el Skippy!')
         }
         
         
