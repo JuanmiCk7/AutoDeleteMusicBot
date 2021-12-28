@@ -8,7 +8,7 @@ client.on('ready', () => {
 
 })
 
-client.on('message', message => {
+/*client.on('message', message => {
     var content = message.content;
 
     for (var i = 0; i < words.length; i++) {
@@ -22,6 +22,6 @@ client.on('message', message => {
         message.delete()
     }
 })
-
+*/
 client.login(process.env.TOKEN)
 
