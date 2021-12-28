@@ -26,12 +26,12 @@ client.on('message', message => {
 
     if(message.content.startsWith('!skippy')) {
 
-        if(!message.member.voiceChannel) {
+        if(!message.member.voice) {
             return message.channel.send('Illo, te tienes que conectar al chat de voz.');
         }
         
 
-        message.member.voiceChannel.join()
+        message.member.voice.join()
           .then(connection => { 
   
               console.log("Ha llegado el Skippy!");
