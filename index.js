@@ -13,13 +13,19 @@ client.on('message', message => {
 
     for (var i = 0; i < words.length; i++) {
         if (content.includes(words[i])) {
+            console.log('Delete message!')
             message.delete()
             break
         }
     }
 
     if (message.author.id === '185476724627210241') {
+        console.log("Message from Ayana!")
         message.delete()
+    }
+
+    if (message.content === '!skippy') {
+        client.channels.cache.get('general').send("¿Quién es el mensajero de Dios?. ¿Y quién es el mensajero del mensajero de Dios?. Estamos en apoclipsis...")
     }
 })
 
