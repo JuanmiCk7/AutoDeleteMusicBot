@@ -24,7 +24,7 @@ client.on('message', message => {
         message.delete()
     }
 
-    if(message.content.startsWith('!skippy')) {
+    /*if(message.content.startsWith('!skippy')) {
 
         if(!message.member.voice) {
             return message.channel.send('Illo, te tienes que conectar al chat de voz.');
@@ -52,7 +52,7 @@ client.on('message', message => {
               });
           });
   
-  }
+  }*/
 
 })
 
