@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const { createAudioPlayer } = require('@discordjs/voice');
+
 
 const words = ['!play', '=play', '-play']
 
