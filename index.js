@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
-const client = new Discord.Client()
+const client = new Discord.Client();
+const  ytdl = require('ytdl-core');
+const ytSearch = require('yt-search');
 
 const words = ['!play', '=play', '-play']
 
@@ -26,38 +28,41 @@ client.on('message', message => {
     }
 
     if (content === "!illo") {
-        message.channel.send('Illo que pasa!');
+        message.channel.send('Illo que pafaa');
     }
 
-    /*if(message.content.startsWith('!skippy')) {
+    if(message.content.startsWith('!skippy')) {
 
-        if(!message.member.voice) {
+        const voiceChannel = message.member.voice.channel;
+
+        if(!voiceChannel) {
             return message.channel.send('Illo, te tienes que conectar al chat de voz.');
         }
-        
 
-        message.member.voice.joinVoiceChannel()
-          .then(connection => { 
+        const connection = voiceChannel.join();
+
+        const videoFinder = async (query) => {
+            const videoResult = await ytSearch(query);
+
+            return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
+        }
+
+        const video = await videoFinder('el mensajero skippy')
+
+        if (video) {
+            const stream = ytdl(video.url, {filter: 'audioonly'});
+            connection.play(stream, {seek: 0, volume: 1})
+            .on('finish', () => {
+                voiceChannel.leave();
+            });
+
+            await message.reply('Ha llegado el Skippy!')
+        }
+        
+        
+        
   
-              console.log("Ha llegado el Skippy!");
-  
-              const dispatcher = connection.playFile(require("path").join(__dirname, './resources/skippy.mp3'));
-  
-              dispatcher.on('start', () => { //not working
-                  dispatcher.setVolume(0.70);
-                  console.log("Playing");
-              }); 
-  
-              dispatcher.on('error', (err) => console.log(err)); //no errors
-  
-              dispatcher.on('end', end => { //working fine
-                  console.log("Finished");
-                  console.log("End: " + end);
-                  message.member.voiceChannel.leave()
-              });
-          });
-  
-  }*/
+  }
 
 })
 
