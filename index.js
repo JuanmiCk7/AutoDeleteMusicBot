@@ -21,6 +21,7 @@ client.on('message', message => {
 
     if (message.author.id === '185476724627210241') {
         console.log("Message from Ayana!")
+        await sleep(5000)
         message.delete()
     }
 
@@ -59,6 +60,12 @@ client.on('message', message => {
   }*/
 
 })
+
+function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
 
 client.login(process.env.TOKEN)
 
