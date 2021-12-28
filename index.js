@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const  ytdl = require('ytdl-core');
-const ytSearch = require('yt-search');
+const { createAudioPlayer } = require('@discordjs/voice');
 
 const words = ['!play', '=play', '-play']
 
@@ -41,26 +40,12 @@ client.on('message', message => {
 
         const connection = voiceChannel.join();
 
-        function videoFinder(query) {
-            const videoResult = ytSearch(query);
+        const player = createAudioPlayer();
 
-            return videoResult.videos[0];
-        }
+        const resource = createAudioResource('./resources/skippy.mp3');
 
-        const video = videoFinder('el mensajero skippy')
+        player.play(resource);
 
-        if (video) {
-            const stream = ytdl(video.url, {filter: 'audioonly'});
-            connection.play(stream, {seek: 0, volume: 1})
-            .on('finish', () => {
-                voiceChannel.leave();
-            });
-
-            message.reply('Ha llegado el Skippy!')
-        }
-        
-        
-        
   
   }
 
