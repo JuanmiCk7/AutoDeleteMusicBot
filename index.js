@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 //const config = require('./config.json')
-const words = ['!play', '=play', '-play']
+//const words = ['!play', '=play', '-play']
 
 client.on('ready', () => {
     console.log('The client is ready!')
