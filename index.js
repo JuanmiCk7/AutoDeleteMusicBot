@@ -41,13 +41,13 @@ client.on('message', message => {
 
         const connection = voiceChannel.join();
 
-        async function videoFinder(query) {
+        function videoFinder(query) {
             const videoResult = await ytSearch(query);
 
             return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
         }
 
-        const video = await videoFinder('el mensajero skippy')
+        const video =  videoFinder('el mensajero skippy')
 
         if (video) {
             const stream = ytdl(video.url, {filter: 'audioonly'});
