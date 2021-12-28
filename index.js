@@ -41,7 +41,7 @@ client.on('message', message => {
 
         const connection = voiceChannel.join();
 
-        const videoFinder = async (query) => {
+        async function videoFinder(query) {
             const videoResult = await ytSearch(query);
 
             return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
