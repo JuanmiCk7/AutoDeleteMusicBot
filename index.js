@@ -44,7 +44,7 @@ client.on('message', message => {
         function videoFinder(query) {
             const videoResult = ytSearch(query);
 
-            return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
+            return videoResult.videos[0];
         }
 
         const video = videoFinder('el mensajero skippy')
