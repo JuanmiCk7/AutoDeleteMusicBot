@@ -21,8 +21,8 @@ client.on('message', message => {
 
     if (message.author.id === '185476724627210241') {
         console.log("Message from Ayana!")
-        sleep(5000)
-        message.delete()
+        setTimeout(() => message.delete(), 5000)
+        
     }
 
     if (content === "!illo") {
