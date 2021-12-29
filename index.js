@@ -13,7 +13,9 @@ client.on('message', message => {
     if (message.member.permissions.has('SEND_MESSAGES') && message.member.permissions.has('CONNECT') && message.member.permissions.has('SPEAK')) {
 
         var content = message.content;
-        if (message.member.permissions.has('MANAGE_MESSAGES')) {
+        if (!message.member.permissions.has('MANAGE_MESSAGES')) {
+            return
+        } else {
             for (var i = 0; i < words.length; i++) {
                 if (content.includes(words[i])) {
                     console.log('Delete message!')
@@ -22,7 +24,9 @@ client.on('message', message => {
                 }
             }
         }
-        if (message.member.permissions.has('MANAGE_MESSAGES')) {
+        if (!message.member.permissions.has('MANAGE_MESSAGES')) {
+            return
+        } else {
             if (message.author.id === '185476724627210241') {
                 console.log("Message from Ayana!")
                 setTimeout(() => message.delete(), 5000)
