@@ -10,7 +10,7 @@ client.on('ready', () => {
 })
 
 client.on('message', message => {
-    if (message.member.permissions.has('SEND_MESSAGES') && message.member.permissions.has('CONNECT') && client.hasPermission('SPEAK')) {
+    if (message.member.permissions.has('SEND_MESSAGES') && message.member.permissions.has('CONNECT') && message.member.permissions.has('SPEAK')) {
 
         var content = message.content;
         if (message.member.permissions.has('MANAGE_MESSAGES')) {
