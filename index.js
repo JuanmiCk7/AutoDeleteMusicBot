@@ -53,6 +53,9 @@ client.on('message', message => {
         console.log('The bot dont have permission!')
     }
 
+    // TO-DO: Que te calles tu puta!
+    
+
 })
 
 function sleep(ms) {
