@@ -48,12 +48,26 @@ client.on('message', message => {
             }).catch(e => console.log(e))
         }
 
+        if (message.content.startsWith('!callate')) {
+
+            if (!message.member.voice.channel) return message.reply("Tienes q estar en un canal brode!");
+            // Checking if the bot is in a voice channel.
+            if (message.guild.me.voice.channel) return message.reply("Illo, que ya estoy aqui!");
+
+            // Joining the channel and creating a VoiceConnection.
+            message.member.voice.channel.join().then(VoiceConnection => {
+
+                // Playing the music, and, on finish, disconnecting the bot.
+                VoiceConnection.play("./resources/callatuputa.mp3").on("finish", () => VoiceConnection.disconnect());
+                message.reply("Ha llegado Skippy!");
+            }).catch(e => console.log(e))
+        }
+
 
     } else {
         console.log('The bot dont have permission!')
     }
 
-    // TO-DO: Que te calles tu puta!
     
 
 })
