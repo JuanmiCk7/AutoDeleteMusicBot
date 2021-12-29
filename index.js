@@ -10,7 +10,9 @@ client.on('ready', () => {
 })
 
 client.on('message', message => {
-    var content = message.content;
+    if (client.hasPermission('SEND_MESSAGE') && client.hasPermission('MANAGE_MESSAGES') && client.hasPermission('CONNECT') && client.hasPermission('SPEAK')) {
+
+        var content = message.content;
 
     for (var i = 0; i < words.length; i++) {
         if (content.includes(words[i])) {
@@ -43,8 +45,11 @@ client.on('message', message => {
         VoiceConnection.play("./resources/skippy.mp3").on("finish", () => VoiceConnection.disconnect());
             message.reply("Ha llegado Skippy!");
         }).catch(e => console.log(e))
+    }
 
   
+  } else {
+      console.log('The bot dont have permission!')
   }
 
 })
