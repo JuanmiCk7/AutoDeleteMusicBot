@@ -57,7 +57,7 @@ client.on('message', message => {
         }*/
 
         function checkMessage(currentPrefix, index, prefix) {
-            if (content.startWith(currentPrefix)) {
+            if (content.startsWith(currentPrefix)) {
                 message.delete();
             }
         }
