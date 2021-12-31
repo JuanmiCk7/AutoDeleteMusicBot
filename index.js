@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
+const prefix = '='
 
 const words = ['!play', '=play', '-play', '!skip', '-skip', '=skip']
 
@@ -13,26 +13,25 @@ client.on('message', message => {
     if (message.member.permissions.has('SEND_MESSAGES') && message.member.permissions.has('CONNECT') && message.member.permissions.has('SPEAK')) {
 
         var content = message.content;
-        if (!message.member.permissions.has('MANAGE_MESSAGES')) {
-            return
-        } else {
-            for (var i = 0; i < words.length; i++) {
+        
+           /* for (var i = 0; i < words.length; i++) {
                 if (content.includes(words[i])) {
                     console.log('Delete message!')
                     message.delete()
                     break
                 }
-            }
+            } */
+        
+        if (content.startsWith(prefix)) {
+            console.log('Delete message!')
+            message.delete()
         }
-        if (!message.member.permissions.has('MANAGE_MESSAGES')) {
-            return
-        } else {
-            if (message.author.id === '185476724627210241') {
-                console.log("Message from Ayana!")
-                setTimeout(() => message.delete(), 5000)
-
-            }
+        
+        if (message.author.id === '185476724627210241') {
+            console.log("Message from Ayana!")
+            setTimeout(() => message.delete(), 5000)
         }
+        
         if (content === "!illo") {
             message.channel.send('Illo que pafaa');
         }
