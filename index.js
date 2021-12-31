@@ -70,6 +70,12 @@ client.on('message', message => {
             message.delete()
         }
 
+        if (message.author.id === '411916947773587456') {
+            console.log("Message from Jockey!")
+            message.delete()
+        }
+
+
         if (content === "!illo") {
             message.channel.send('Illo que pafaa');
         }
