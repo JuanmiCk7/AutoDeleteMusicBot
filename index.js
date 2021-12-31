@@ -1,8 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '='
+const prefix = ['=', 'm!']
 
-const words = ['!play', '=play', '-play', '!skip', '-skip', '=skip']
 
 client.on('ready', () => {
     console.log('The client is ready!')
@@ -52,10 +51,19 @@ client.on('message', message => {
             }).catch(e => console.log(e))
         }
 
-        if (content.startsWith(prefix)) {
+        /*if (content.startsWith(prefix)) {
             console.log('Delete message!')
             message.delete()
+        }*/
+
+        function checkMessage(currentPrefix, index, prefix) {
+            if (content.startWith(currentPrefix)) {
+                message.delete();
+            }
         }
+
+        prefix.forEach(checkMessage);
+            
 
         if (message.author.id === '185476724627210241') {
             console.log("Message from Ayana!")
